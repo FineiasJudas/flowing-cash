@@ -1,0 +1,51 @@
+# ==========================================
+# FlowingCash - Master Gitignore (Monorepo)
+# ==========================================
+
+# --- Dependências (Node.js) ---
+# Ignora a pasta node_modules em qualquer subpasta do projeto
+**/node_modules/
+node_modules/
+
+# --- Arquivos de Compilação e Produção ---
+# Backend (Express)
+**/dist/
+**/build/
+
+# Frontend (Next.js)
+**/.next/
+**/out/
+
+# --- Segurança e Segredos (CRÍTICO) ---
+# Ignora arquivos de configuração local e senhas de banco de dados
+**/.env
+**/.env.local
+**/.env.production
+**/.env.development
+**/.env.test
+.env
+.env.*
+
+# --- Logs e Diagnósticos ---
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+*.log
+
+# --- Sistema Operacional ---
+.DS_Store
+.DS_Store?
+Thumbs.db
+EHthumbs.db
+[Dd]esktop.ini
+
+# --- IDEs e Editores ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
