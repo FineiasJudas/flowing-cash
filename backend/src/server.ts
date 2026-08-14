@@ -4,14 +4,56 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { prisma } from './config/database.js';
 
+import { authRoutes } from './routes/auth.routes.js';
+import { categoryRoutes } from './routes/category.routes.js';
+import { transactionRoutes } from './routes/transaction.routes.js';
+import { dashboardRoutes } from './routes/dashboard.routes.js';
+
+
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
+
+// Define o array explicitamente como (string | RegExp)[] ou apenas strings
+const allowedOrigins: (string | RegExp)[] = [
+  'http://localhost:3000',
+  'https://mock-interview-premiun.vercel.app',
+];
+
+/* Configuração do CORS
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      const isAllowed = allowedOrigins.some((allowed) => {
+        if (typeof allowed === 'string') {
+          return allowed === origin;
+        }
+        return allowed.test(origin);
+      });
+
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Bloqueado pelo CORS: Origem ${origin} não permitida.`));
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
+);*/
 
 // Middlewares globais
 app.use(cors());
 app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/transactions', transactionRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Rota de Health Check / Teste de Conexão com o Banco
 app.get('/health', async (req, res) => {
@@ -32,5 +74,5 @@ app.get('/health', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor FlowingCash a rodar em: http://localhost:${PORT}`);
+  console.log(`Servidor FlowingCash a rodar em: http://localhost:${PORT}`);
 });

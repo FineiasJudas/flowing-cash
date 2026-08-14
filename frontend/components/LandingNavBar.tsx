@@ -1,0 +1,103 @@
+'use client'
+
+import { useState } from "react";
+import Link from "next/link";
+import { FlowingCashLogo } from "@/components/FlowingCashLogo"
+
+const NavBarItens = [
+  { id: "1", href: "#inicio", label: "Início" },
+  { id: "2", href: "#sobre", label: "Sobre" },
+  { id: "3", href: "#como-funciona", label: "Como funciona" },
+  { id: "4", href: "#servicos", label: "Serviços" },
+];
+
+export default function LandingNavBar() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  return (
+    <header className="w-full bg-gray/90 backdrop-blur-md sticky z-50 top-0 border-b border-gray-200 shadow-sm">
+      <div className="w-full flex flex-row justify-between max-w-6xl mx-auto items-center px-4 py-4">
+        {/* Logo */}
+	<FlowingCashLogo />
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex flex-row items-center gap-8">
+          {NavBarItens.map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              className="text-base font-medium text-gray-700 hover:text-[#431880] transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop Action Buttons */}
+        <div className="hidden md:flex flex-row items-center gap-3">
+          <Link
+            href="/login"
+            className="px-5 py-2.5 rounded-full bg-white text-gray-800 text-sm font-medium border border-gray-300 hover:bg-gray-100 shadow-sm transition-all"
+          >
+            Entrar
+          </Link>
+          <Link
+            href="/register"
+            className="px-5 py-2.5 rounded-full bg-[#431880] text-white text-sm font-medium border border-[#431880] hover:bg-[#341266] shadow-sm transition-all"
+          >
+            Registrar
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={() => setOpenMenu(!openMenu)}
+          aria-label="Toggle menu"
+          className="flex md:hidden p-2 text-gray-700 hover:text-[#431880] focus:outline-none"
+        >
+          {openMenu ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {openMenu && (
+        <nav className="flex md:hidden flex-col bg-white border-t border-gray-100 px-6 py-4 gap-4 shadow-lg">
+          {NavBarItens.map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              onClick={() => setOpenMenu(false)}
+              className="text-lg font-medium text-gray-800 hover:text-[#431880] py-1"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div className="flex flex-col gap-3 pt-2 border-t border-gray-100">
+            <Link
+              href="/login"
+              onClick={() => setOpenMenu(false)}
+              className="w-full text-center px-5 py-2.5 rounded-full bg-white text-gray-800 text-sm font-medium border border-gray-300 hover:bg-gray-100"
+            >
+              Entrar
+            </Link>
+            <Link
+              href="/register"
+              onClick={() => setOpenMenu(false)}
+              className="w-full text-center px-5 py-2.5 rounded-full bg-[#431880] text-white text-sm font-medium hover:bg-[#341266]"
+            >
+              Registrar
+            </Link>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+}
