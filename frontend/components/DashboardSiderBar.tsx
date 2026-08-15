@@ -24,7 +24,7 @@ export default function DashboardSideBar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-16 md:w-64 h-screen sticky top-0 flex flex-col bg-[#1e293b] text-slate-300 border-r border-slate-700 shadow-lg z-40 transition-all duration-300">
+    <aside className="w-16 md:w-68 h-screen sticky top-0 flex flex-col bg-[#1e293b] text-slate-300 border-r border-slate-700 shadow-lg z-40 transition-all duration-300">
       {/* Logo */}
       <Link 
         href="" 
@@ -57,6 +57,8 @@ export default function DashboardSideBar() {
             </Link>
           );
         })}
+        
+        
       </nav>
     </aside>
   );

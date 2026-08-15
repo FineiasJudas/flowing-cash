@@ -59,11 +59,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex h-screen w-screen bg-gray-100 overflow-hidden">
       
       {/* SIDEBAR */}
-      <aside className="w-64 h-full bg-gray-800 flex flex-col justify-between border-r border-gray-300 shrink-0 hidden md:flex">
+      <aside className="w-16 md:w-64 h-full bg-gray-800 flex flex-col justify-between border-r border-gray-300 shrink-0 flex">
         <div className="flex flex-col">
           {/* Logo */}
-          <DashboardFlowingCashLogo className="text-gray-200 px-4 py-4"/>
-
+          <DashboardFlowingCashLogo className="hidden md:flex text-gray-200 px-4 py-4"/>
+          <DashboardFlowingCashLogo iconOnly={true} className="justify-center md:hidden text-gray-200 px-4 py-4"/>
+          
           {/* Navegação */}
           <nav className="flex flex-col gap-1.5 px-1">
             {menuItems.map((item) => {
@@ -73,7 +74,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <button
                   key={item.path}
                   onClick={() => router.push(item.path)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 font-medium rounded text-sm transition-all duration-300 cursor-pointer ${
+                  className={`w-full hidden md:flex  items-center gap-3 px-4 py-3 font-medium rounded text-sm transition-all duration-300 cursor-pointer ${
                     isActive 
                       ? "bg-gray-100 text-gray-800 shadow-md shadow-[#431880]/15" 
                       : "text-gray-200 hover:bg-gray-200 hover:text-gray-900"
@@ -84,16 +85,42 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </button>
               );
             })}
+            
+             {menuItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.path;
+              return (
+                <button
+                  key={item.path}
+                  onClick={() => router.push(item.path)}
+                  className={`w-full flex md:hidden items-center px-4 py-3 font-medium rounded text-sm transition-all duration-300 cursor-pointer ${
+                    isActive 
+                      ? "bg-gray-100 text-gray-800 shadow-md shadow-[#431880]/15" 
+                      : "text-gray-200 hover:bg-gray-200 hover:text-gray-900"
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive && "text-gray-800"}`} />
+                </button>
+              );
+            })}
+            
           </nav>
         </div>
 
         {/* Botão Sair da Sidebar */}
         <button
           onClick={() => setShowLogoutModal(true)}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-red-600 hover:bg-red-50 transition-all cursor-pointer"
+          className="w-full hidden md:flex items-center gap-3 px-4 py-3 rounded font-medium text-sm text-red-600 hover:text-red-400 transition-all cursor-pointer"
         >
           <LogOut className="w-4 h-4" />
           Terminar Sessão
+        </button>
+         {/* Botão Sair da Sidebar */}
+        <button
+          onClick={() => setShowLogoutModal(true)}
+          className="w-full flex md:hidden items-center px-4 py-3 rounded font-medium text-sm text-red-600 hover:text-red-400 transition-all cursor-pointer"
+        >
+          <LogOut className="w-4 h-4" />
         </button>
       </aside>
 
@@ -122,13 +149,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-xl py-1.5 z-50 text-sm">
                 <button
                   onClick={() => { setIsMenuOpen(false); router.push('/dashboard/configs'); }}
-                  className="w-full text-left px-4 py-2.5 hover:bg-gray-50 text-gray-700 flex items-center gap-2.5 font-medium"
+                  className="w-full text-left px-4 py-2.5 hover:bg-gray-50 text-gray-700 flex items-center transition duration-300 gap-2.5 font-medium"
                 >
                   Definições
                 </button>
                 <button
                   onClick={() => { setIsMenuOpen(false); setShowLogoutModal(true); }}
-                  className="w-full text-left px-4 py-2.5 hover:bg-red-50 text-red-600 font-medium flex items-center gap-2.5 border-t border-gray-100"
+                  className="w-full text-left px-4 py-2.5 hover:bg-red-50 text-red-600 font-medium flex items-center transition duration-300 gap-2.5 border-t border-gray-100"
                 >
                   Terminar sessão
                 </button>
