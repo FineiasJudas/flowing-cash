@@ -23,31 +23,6 @@ const allowedOrigins: (string | RegExp)[] = [
   'https://mock-interview-premiun.vercel.app',
 ];
 
-/* Configuração do CORS
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-
-      const isAllowed = allowedOrigins.some((allowed) => {
-        if (typeof allowed === 'string') {
-          return allowed === origin;
-        }
-        return allowed.test(origin);
-      });
-
-      if (isAllowed) {
-        callback(null, true);
-      } else {
-        callback(new Error(`Bloqueado pelo CORS: Origem ${origin} não permitida.`));
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  })
-);*/
-
 // Middlewares globais
 app.use(cors());
 app.use(express.json());

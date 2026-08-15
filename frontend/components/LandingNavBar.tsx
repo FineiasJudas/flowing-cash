@@ -17,7 +17,13 @@ export default function LandingNavBar() {
 
   return (
     <header className="w-full bg-white/80 backdrop-blur-md sticky z-50 top-0 border-b border-gray-200/80 shadow-sm transition-all">
-      <div className="w-full flex flex-row justify-between max-w-6xl mx-auto items-center px-4 py-4">
+      <motion.div 
+        	initial={{ opacity: 0, y: 15 }}
+		  whileInView={{ opacity: 1, y: 0 }}
+		  viewport={{ once: true }}
+		  transition={{ duration: 0.5 }}
+      
+       className="w-full flex flex-row justify-between max-w-6xl mx-auto items-center px-4 py-4">
         
         {/* Logo */}
         <FlowingCashLogo />
@@ -31,7 +37,7 @@ export default function LandingNavBar() {
               className="text-base font-medium text-gray-700 hover:text-[#431880] transition-colors relative group py-1"
             >
               {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#431880] transition-all duration-300 group-hover:w-full rounded-full" />
+             
             </Link>
           ))}
         </nav>
@@ -68,7 +74,7 @@ export default function LandingNavBar() {
             </svg>
           )}
         </button>
-      </div>
+      </motion.div>
 
       {/* Mobile Menu Dropdown com Framer Motion */}
       <AnimatePresence>

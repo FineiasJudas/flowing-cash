@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation"
 import Link from "next/link";
 import { FlowingCashLogo } from "@/components/FlowingCashLogo"
@@ -64,7 +65,13 @@ export default function LoginPage() {
                 <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl pointer-events-none" />
 
                 {/* Botão Voltar */}
-                <div className="relative z-10">
+                
+                <motion.div 
+                	  initial={{ opacity: 0, y: 20 }}
+			  whileInView={{ opacity: 1, y: 0 }}
+			  viewport={{ once: true }}
+			  transition={{ duration: 1.3 }}
+                 className="relative z-10">
                     <Link 
                         href="/landing"
                         className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-[#431880] transition-colors group px-4 py-2 rounded-xl backdrop-blur-md "
@@ -72,11 +79,16 @@ export default function LoginPage() {
                         <ArrowLeft size={16} className="transform group-hover:-translate-x-1 transition-transform" />
                         Voltar 
                     </Link>
-                </div>
+                </motion.div>
 
                 {/* Card de Conteúdo Publicitário (Estilo Glassmorphism com Tom Slate) */}
-                <div className="max-w-lg mb-8 lg:p-10 backdrop-blur-md">
-                    <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-500 text-gray-100 border border-gray-700/30 mb-6">
+                <motion.div 
+                	  initial={{ opacity: 0, y: 20 }}
+		  whileInView={{ opacity: 1, y: 0 }}
+		  viewport={{ once: true }}
+		  transition={{ duration: 0.5 }}
+                className="max-w-lg mb-8 lg:p-10 backdrop-blur-md">
+                    <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold bg-violet-950 text-gray-100 border border-gray-700/30 mb-6">
                         FlowingCash Ecosystem
                     </span>
                     <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-800 tracking-tight leading-[1.15] mb-5">
@@ -85,17 +97,29 @@ export default function LoginPage() {
                     <p className="text-base lg:text-lg text-slate-600 font-normal leading-relaxed">
                         Centralize as suas despesas, monitorize economias em tempo real e utilize inteligência artificial para otimizar o seu património a partir de um único painel.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Rodapé do Painel */}
-                <div className="relative z-10 text-xs font-medium text-slate-500">
+                
+                <motion.div 
+                	  initial={{ opacity: 0, y: 20 }}
+		  whileInView={{ opacity: 1, y: 0 }}
+		  viewport={{ once: true }}
+		  transition={{ duration: 1 }}
+                 className="relative z-10 text-xs font-medium text-slate-500">
                     © FlowingCash. Gestão financeira inteligente.
-                </div>
+                </motion.div>
             </div>
 
             {/* PAINEL DIREITO: Formulário de Autenticação */}
             <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-6 lg:p-12">
-                <div className="w-full max-w-[440px] bg-white flex flex-col px-8 py-10 sm:px-10 sm:py-12 rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200">
+                
+                <motion.div 
+                	  initial={{ opacity: 0, y: 20 }}
+		  whileInView={{ opacity: 1, y: 0 }}
+		  viewport={{ once: true }}
+		  transition={{ duration: 0.8 }}
+                 className="w-full max-w-[440px] bg-white flex flex-col px-8 py-10 sm:px-10 sm:py-12 rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200">
                     
                     {/* Logotipo e Header */}
                     <div className="flex flex-col items-center mb-8">
@@ -188,7 +212,7 @@ export default function LoginPage() {
                             </Link>
                         </p>
                     </div>
-                </div>
+                </motion.div>
             </div>   
         </div>
     )
