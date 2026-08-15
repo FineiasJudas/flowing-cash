@@ -17,4 +17,14 @@ export class DashboardController {
       return res.status(500).json({ message: 'Erro ao gerar resumo do dashboard.' });
     }
   }
+
+  async getMonthlyOverview(req: Request, res: Response) {
+    try {
+      const months = req.query.months ? Number(req.query.months) : 6;
+      const overview = await this.dashboardService.getMonthlyOverview(req.userId!, months);
+      return res.status(200).json(overview);
+    } catch (error) {
+      return res.status(500).json({ message: 'Erro ao gerar visão geral mensal.' });
+    }
+  }
 }

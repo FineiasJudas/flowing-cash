@@ -26,6 +26,7 @@ model User {
 
   categories   Category[]
   transactions Transaction[]
+  savingGoals  SavingGoal[]
 
   @@map("users")
 }
@@ -44,6 +45,22 @@ model Category {
   transactions Transaction[]
 
   @@map("categories")
+}
+
+model SavingGoal {
+  id            String   @id @default(uuid())
+  title         String
+  category      String
+  currentAmount Decimal  @default(0) @db.Decimal(12, 2) @map("current_amount")
+  targetAmount  Decimal  @db.Decimal(12, 2) @map("target_amount")
+  deadline      DateTime?
+  userId        String   @map("user_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("saving_goals")
 }
 
 model Transaction {

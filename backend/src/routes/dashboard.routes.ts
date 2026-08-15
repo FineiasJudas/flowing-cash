@@ -9,5 +9,6 @@ const dashboardController = new DashboardController();
 dashboardRoutes.use(authMiddleware);
 
 dashboardRoutes.get('/summary', (req, res) => dashboardController.getSummary(req, res));
+dashboardRoutes.get('/monthly-overview', (req, res) => dashboardController.getMonthlyOverview(req, res));
 
 export { dashboardRoutes };

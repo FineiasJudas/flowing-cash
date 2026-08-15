@@ -37,19 +37,13 @@ export class AuthController {
     }
   }
 
-    async user(req: Request, res: Response) {
+  async me(req: Request, res: Response) {
     try {
-      const { email, password } = req.body;
-
-      if (!email || !password) {
-        return res.status(400).json({ message: 'Email e palavra-passe são obrigatórios.' });
-      }
-
-      const result = await this.authService.user(email, password);
-      return res.status(200).json(result);
+      const user = await this.authService.me(req.userId!);
+      return res.status(200).json({ user });
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Erro ao efetuar login.';
-      return res.status(401).json({ message });
+      const message = error instanceof Error ? error.message : 'Erro ao obter utilizador.';
+      return res.status(404).json({ message });
     }
   }
 }

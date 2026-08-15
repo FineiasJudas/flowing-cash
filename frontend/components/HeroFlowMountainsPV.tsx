@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type Props = { className?: string };
 
@@ -12,7 +12,7 @@ const TEAL = "#14B8A6";
 // As barras sobem primeiro (staggered, tipo "a carregar dados"),
 // depois a linha de picos desenha-se por cima.
 export function HeroFlowMountainsPV({ className = "" }: Props) {
-  const barVariants = {
+  const barVariants: Variants = {
     hidden: { scaleY: 0 },
     visible: (i: number) => ({
       scaleY: 1,

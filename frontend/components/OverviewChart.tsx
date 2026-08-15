@@ -10,16 +10,17 @@ import {
   CartesianGrid 
 } from 'recharts';
 
-const data = [
-  { month: 'Jan', receitas: 250000, despesas: 120000 },
-  { month: 'Fev', receitas: 300000, despesas: 180000 },
-  { month: 'Mar', receitas: 280000, despesas: 150000 },
-  { month: 'Abr', receitas: 350000, despesas: 210000 },
-  { month: 'Mai', receitas: 420000, despesas: 190000 },
-  { month: 'Jun', receitas: 390000, despesas: 220000 },
-];
+export type OverviewChartPoint = {
+  month: string;
+  receitas: number;
+  despesas: number;
+};
 
-export default function OverviewChart() {
+interface OverviewChartProps {
+  data: OverviewChartPoint[];
+}
+
+export default function OverviewChart({ data }: OverviewChartProps) {
   return (
     <div className="w-full h-[320px] bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col gap-4">
       <div className="flex items-center justify-between">
@@ -57,8 +58,8 @@ export default function OverviewChart() {
               formatter={(value: any) => [`${Number(value).toLocaleString('pt-AO')} Kz`, '']}
               contentStyle={{ backgroundColor: '#ffffff', borderRadius: '12px', borderColor: '#e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
             />
-            <Area type="monotone" dataKey="receitas" stroke="#10b981" strokeWidth={2.5} fillOpacity={1} fill="url(#colorReceitas)" />
-            <Area type="monotone" dataKey="despesas" stroke="#431880" strokeWidth={2.5} fillOpacity={1} fill="url(#colorDespesas)" />
+            <Area type="monotone" dataKey="receitas" stroke="#10b981" strokeWidth={2.5} fillOpacity={1} fill="url(#colorReceitas)" animationDuration={900} animationEasing="ease-out" />
+            <Area type="monotone" dataKey="despesas" stroke="#431880" strokeWidth={2.5} fillOpacity={1} fill="url(#colorDespesas)" animationDuration={900} animationBegin={150} animationEasing="ease-out" />
           </AreaChart>
         </ResponsiveContainer>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type Props = { className?: string };
 
@@ -13,7 +13,7 @@ const INK = "#1F1233";
 // Sequência: grelha -> candlesticks (staggered) -> área + linha de picos
 // -> média móvel -> cartão de valor.
 export function HeroFlowMountainsDetailed({ className = "" }: Props) {
-  const candleVariants = {
+  const candleVariants: Variants = {
     hidden: { scaleY: 0 },
     visible: (i: number) => ({
       scaleY: 1,

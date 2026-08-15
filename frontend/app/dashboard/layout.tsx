@@ -9,8 +9,9 @@ import {
   PiggyBank, 
   Settings, 
   LogOut, 
-  FlowingCashLogo // Substitui pelo teu componente real
+   // Substitui pelo teu componente real
 } from "lucide-react";
+import { DashboardFlowingCashLogo } from '@/components/DashboardFlowingCashLogo';
 
 type User = { name: string; email: string; }
 
@@ -55,19 +56,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   ];
 
   return (
-    <div className="flex h-screen w-screen bg-gray-50/50 overflow-hidden">
+    <div className="flex h-screen w-screen bg-gray-100 overflow-hidden">
       
       {/* SIDEBAR */}
-      <aside className="w-64 h-full bg-white border-r border-gray-200 flex flex-col justify-between p-4 shrink-0 hidden md:flex">
-        <div className="flex flex-col gap-8">
+      <aside className="w-64 h-full bg-gray-800 flex flex-col justify-between border-r border-gray-300 shrink-0 hidden md:flex">
+        <div className="flex flex-col">
           {/* Logo */}
-          <div className="flex items-center gap-3 px-2 py-3">
-            <div className="w-8 h-8 rounded-lg bg-[#431880] flex items-center justify-center text-white font-bold">F</div>
-            <span className="font-bold text-lg text-gray-800 tracking-tight">FlowingCash</span>
-          </div>
+          <DashboardFlowingCashLogo className="text-gray-200 px-4 py-4"/>
 
           {/* Navegação */}
-          <nav className="flex flex-col gap-1.5">
+          <nav className="flex flex-col gap-1.5 px-1">
             {menuItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.path;
@@ -75,13 +73,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <button
                   key={item.path}
                   onClick={() => router.push(item.path)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all cursor-pointer ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 font-medium rounded text-sm transition-all duration-300 cursor-pointer ${
                     isActive 
-                      ? "bg-[#431880] text-white shadow-md shadow-[#431880]/15" 
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      ? "bg-gray-100 text-gray-800 shadow-md shadow-[#431880]/15" 
+                      : "text-gray-200 hover:bg-gray-200 hover:text-gray-900"
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-gray-400"}`} />
+                  <Icon className={`w-4 h-4 ${isActive && "text-gray-800"}`} />
                   {item.label}
                 </button>
               );
@@ -103,10 +101,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         
         {/* TOPBAR */}
-        <header className="w-full bg-white flex flex-row justify-between items-center px-6 py-4 border-b border-gray-200 shadow-sm shrink-0">
+        <header className="w-full bg-white flex flex-row justify-between items-center px-6 py-3 border-b border-gray-200 shadow-sm shrink-0">
           <div>
             <h1 className="text-xl font-bold text-gray-800">
-              Olá, <span className="text-[#431880]">{user?.name || 'Utilizador'}</span> 👋
+              Olá, <span className="text-gray-800">{user?.name || 'Utilizador'}</span>
             </h1>
           </div>
 
