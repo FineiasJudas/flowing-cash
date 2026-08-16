@@ -176,7 +176,7 @@ export default function DashboardGeral() {
         >
           {summary && summary.recentTransactions.length > 0 ? (
             summary.recentTransactions.map((t) => (
-              <div
+              <motion.div
                 key={t.id}
                 whileHover={{ backgroundColor: "rgba(67, 24, 128, 0.03)" }}
                 className="flex items-center justify-between px-6 py-3.5 text-sm"
@@ -188,7 +188,7 @@ export default function DashboardGeral() {
                 <span className={`font-bold ${t.type === 'INCOME' ? 'text-emerald-600' : 'text-gray-900'}`}>
                   {t.type === 'INCOME' ? '+' : '-'}{formatKz(Number(t.amount))} Kz
                 </span>
-              </div>
+              </motion.div>
             ))
           ) : (
             <p className="px-6 py-8 text-center text-sm text-gray-400">Ainda não há transações registadas.</p>
