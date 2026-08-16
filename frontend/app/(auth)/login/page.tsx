@@ -112,7 +112,7 @@ export default function LoginPage() {
             </div>
 
             {/* PAINEL DIREITO: Formulário de Autenticação */}
-            <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-1.5 lg:p-12">
+            <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center px-2 lg:p-12">
                 
                 <motion.div 
                 	  initial={{ opacity: 0, y: 20 }}
