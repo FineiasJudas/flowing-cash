@@ -120,7 +120,7 @@ export default function DashboardGeral() {
         </div>
 
         {/* Card Receitas */}
-        <div
+        <motion.div
           variants={cardVariants}
           whileHover={{ y: -3, transition: { duration: 0.2 } }}
           className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between min-h-[140px]"
@@ -137,7 +137,7 @@ export default function DashboardGeral() {
               <TrendingUp className="w-5 h-5" />
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Card Despesas */}
         <div
@@ -159,9 +159,9 @@ export default function DashboardGeral() {
       </div>
 
       {/* GRÁFICO */}
-      <div variants={cardVariants} className="w-full">
+      <motion.div variants={cardVariants} className="w-full">
         <OverviewChart data={chartData} />
-      </div>
+      </motion.div>
 
       {/* TRANSAÇÕES RECENTES */}
       <div
