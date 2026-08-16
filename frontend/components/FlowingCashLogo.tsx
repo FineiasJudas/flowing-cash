@@ -12,8 +12,8 @@ export function FlowingCashLogo({ className = "", iconOnly = false }: FlowingCas
   return (
     <div className={`flex items-center gap-1 ${className}`}>
       <svg
-        width="31"
-        height="35"
+        width="26"
+        height="30"
         viewBox="4 -3 87 99"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export function FlowingCashLogo({ className = "", iconOnly = false }: FlowingCas
       </svg>
 
       {!iconOnly && (
-        <span className="mt-3 text-[28px] font-semibold tracking-tight text-gray-700 leading-none">
+        <span className="mt-2 text-[24px] md:text-[28px] font-semibold tracking-tight text-gray-700 leading-none">
           Flowing
           <span className="text-[#431880]">Cash</span>
         </span>

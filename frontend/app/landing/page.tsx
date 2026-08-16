@@ -54,10 +54,10 @@ export default function LandingPage() {
           <p className="text-lg md:text-xl text-gray-600 max-w-lg">
             O teu controlo financeiro nunca foi tão intuitivo, rápido e otimizado. Tudo num único lugar.
           </p>
-          <div className="flex flex-row gap-4 mt-4">
+          <div className="flex flex-row gap-4 mt-4 text-sm md:text-lg">
             <Link
               href="/login"
-              className="px-6 py-3 rounded-full bg-[#431880] text-white font-medium hover:bg-[#341266] shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+              className="px-6 py-3 rounded-full bg-[#431880] text-white  font-medium hover:bg-[#341266] shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
             >
               Começar agora
             </Link>
@@ -75,7 +75,7 @@ export default function LandingPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <HeroFlowMountainsDetailedNoPV className="w-[500px] px-6 md:px-0" />
+          <HeroFlowMountainsDetailedNoPV className="w-[400px] md:w-[500px] px-6 my-8 md:px-0" />
         </motion.div>
       </section>
 

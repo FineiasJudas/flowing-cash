@@ -178,6 +178,7 @@ export default function DashboardGeral() {
             summary.recentTransactions.map((t) => (
               <motion.div
                 key={t.id}
+                variants={rowVariants}
                 whileHover={{ backgroundColor: "rgba(67, 24, 128, 0.03)" }}
                 className="flex items-center justify-between px-6 py-3.5 text-sm"
               >

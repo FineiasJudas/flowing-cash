@@ -91,7 +91,7 @@ export default function LandingNavBar() {
                 key={item.id}
                 href={item.href}
                 onClick={() => setOpenMenu(false)}
-                className="text-lg font-medium text-gray-800 hover:text-[#431880] py-1 transition-colors"
+                className="text font-medium text-gray-800 hover:text-[#431880] py-1 transition-colors"
               >
                 {item.label}
               </Link>

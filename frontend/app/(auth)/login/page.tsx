@@ -112,14 +112,14 @@ export default function LoginPage() {
             </div>
 
             {/* PAINEL DIREITO: Formulário de Autenticação */}
-            <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-6 lg:p-12">
+            <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-1.5 lg:p-12">
                 
                 <motion.div 
                 	  initial={{ opacity: 0, y: 20 }}
 		  whileInView={{ opacity: 1, y: 0 }}
 		  viewport={{ once: true }}
 		  transition={{ duration: 0.8 }}
-                 className="w-full max-w-[440px] bg-white flex flex-col px-8 py-10 sm:px-10 sm:py-12 rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200">
+                 className="w-full max-w-[440px] bg-white flex flex-col px-8 py-10 rounded-2xl border border-slate-200 shadow-2xl shadow-slate-200">
                     
                     {/* Logotipo e Header */}
                     <div className="flex flex-col items-center mb-8">
